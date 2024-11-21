@@ -13,7 +13,17 @@ public void draw()
 }
 public void keyPressed() {
   if(key == 'w') {
-    bob.setDirection(1);
-    bob.accelerate(bob.myPointDirection);
+    bob.accelerate(0.5);
+  }
+  if(key == 'a') {
+    bob.turn(-10);
+  }
+  if(key == 'd') {
+    bob.turn(10);
+  }
+  if(key == CODED) {
+    if(keyCode == SHIFT) {
+      bob.hyperspace();
+    }
   }
 }
