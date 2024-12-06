@@ -1,53 +1,26 @@
-//your variable declarations here
-Spaceship bob = new Spaceship();
-Star[] sky = new Star[300];
-ArrayList <Asteroid> rock = new ArrayList <Asteroid>();
-
-public void setup() 
+class Asteroid extends Floater  
 {
-  //your code here
-  size(600, 600);
-  for(int i = 0; i < 300; i++) {
-    sky[i] = new Star();
+  private int rotation;
+  public Asteroid() {
+    corners = 6;
+    xCorners = new int[] {-9, 5, 9, 6, -9, -11};
+    yCorners = new int[] {-8, -8, 0, 10, 8, 0};
+    myCenterX = Math.random() * 550;
+    myCenterY = Math.random() * 550;
+    myColor = #9D5218;
+    myYspeed = (Math.random()*6) - 3;
+    myXspeed = (Math.random()*6) - 3;
+    myPointDirection = Math.random() * 361;
+    rotation = 5;
   }
-  for(int i = 0; i < 30; i++) {
-    rock.add(new Asteroid());
+  public void move() {
+    turn(rotation);
+    super.move();
   }
-}
-public void draw() 
-{
-  background(0);
-  for(int i = 0; i < sky.length; i++) {
-    sky[i].show();
+  public double getX() {
+    return myCenterX;
   }
-  bob.move();
-  bob.show();
-  for(int i = 0; i < rock.size(); i++) {
-    rock.get(i).move();
-    rock.get(i).show();
-    float d = dist((float)(bob.getX()), (float)(bob.getY()), (float)(rock.get(i).getX()), (float)(rock.get(i).getY()));
-    if(d < 20) {
-      rock.remove(i);
-      rock.add(new Asteroid());
-    }
-  }
-}
-public void keyPressed() {
-  if(key == 'w') {
-    bob.accelerate(0.5);
-  }
-  if(key == 's') {
-    bob.accelerate(-0.5);
-  }
-  if(key == 'a') {
-    bob.turn(-10);
-  }
-  if(key == 'd') {
-    bob.turn(10);
-  }
-  if(key == CODED) {
-    if(keyCode == SHIFT) {
-      bob.hyperspace();
-    }
+  public double getY() {
+    return myCenterY;
   }
 }
