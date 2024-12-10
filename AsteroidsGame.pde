@@ -29,6 +29,7 @@ public void draw()
     if(d < 20) {
       rock.remove(i);
       rock.add(new Asteroid());
+      i--;
     }
   }
 }
