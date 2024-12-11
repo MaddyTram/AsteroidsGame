@@ -2,6 +2,7 @@
 Spaceship bob = new Spaceship();
 Star[] sky = new Star[300];
 ArrayList <Asteroid> rock = new ArrayList <Asteroid>();
+ArrayList <Bullet> shot = new ArrayList <Bullet>();
 
 public void setup() 
 {
@@ -32,6 +33,17 @@ public void draw()
       i--;
     }
   }
+  for(int i = 0; i < shot.size(); i++) {
+    shot.get(i).move();
+    shot.get(i).show(); 
+    float s = dist((float)(shot.get(i).getX()), (float)(shot.get(i).getY()), (float)(rock.get(i).getX()), (float)(rock.get(i).getY()));
+    if(s < 100) {
+      rock.remove(i);
+      shot.remove(i);
+      i--;
+      break;
+    }
+  }
 }
 public void keyPressed() {
   if(key == 'w') {
@@ -50,5 +62,8 @@ public void keyPressed() {
     if(keyCode == SHIFT) {
       bob.hyperspace();
     }
+  }
+  if(key == ' ') {
+    shot.add(new Bullet(bob));
   }
 }
