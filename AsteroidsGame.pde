@@ -36,14 +36,6 @@ public void draw()
   for (int i = 0; i < shot.size(); i++) {
     shot.get(i).move();
     shot.get(i).show();
-    if ((shot.get(i).getX() > 600) || (shot.get(i).getY() > 600)) {
-      shot.remove(i);
-      i--;
-    }
-    if ((shot.get(i).getX() < 0) || (shot.get(i).getY() < 0)) {
-      shot.remove(i);
-      i--;
-    }
     for (int j = 0; j < rock.size(); j++) {
       float s = dist((float)(shot.get(i).getX()), (float)(shot.get(i).getY()), (float)(rock.get(j).getX()), (float)(rock.get(j).getY()));
       if (s < 10) {
