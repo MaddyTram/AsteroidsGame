@@ -74,7 +74,8 @@ public void keyPressed() {
       bob.hyperspace();
     }
   }
-  if (key == 'r') {
+  if (key == ' ') {
     shot.add(new Bullet(bob));
   }
 }
+
